@@ -35,7 +35,7 @@ var unidadesDeSaude = [
         "nome": "CAPS 2",
         "unidade": "CAPS II ESPERANÇA",
         "endereco": "Rua Casimiro de Abreu, 196",
-        "telefone ": "(19) 3829-2524 (19) 3849-1335",
+        "telefone": "(19) 3829-2524 (19) 3849-1335",
         "horario": "Segunda a sexta-feira, das 08h às 17h",
         "lat": -22.979123,
         "lon": -46.995597
@@ -45,7 +45,7 @@ var unidadesDeSaude = [
         "nome": "CAPS Infantil",
         "unidade": "CAPS INFANTIL",
         "endereco": "Rua Casimiro de Abreu, 138",
-        "telefone ": "(19) 3829-3457 (19) 3849-4623",
+        "telefone": "(19) 3829-3457 (19) 3849-4623",
         "horario": "Segunda a sexta-feira, das 08h às 17h",
         "lat": -22.978757,
         "lon": -46.996026
@@ -55,7 +55,7 @@ var unidadesDeSaude = [
         "nome": "Centro Municipal de Atendimento Psicopedagógico e Fonoaudiológico (CEMAP) \u201dJosé Natal Capovilla\u201d",
         "unidade": "CENTRO AMB. SAÚDE MENTAL (ADLSA)",
         "endereco": "Rua João Moleta, nº 140",
-        "telefone ": "(19) 3869-1113",
+        "telefone": "(19) 3869-1113",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.960825,
         "lon": -46.99305
@@ -65,7 +65,7 @@ var unidadesDeSaude = [
         "nome": "Centro de Especialidades de Valinhos (CEV) 1 – Dr. Admar Concon",
         "unidade": "CEV 1",
         "endereco": "Avenida dos Esportes, 335",
-        "telefone ": "(19) 3829-5120",
+        "telefone": "(19) 3829-5120",
         "horario": "Segunda a sexta-feira, das 07h às 17h",
         "lat": -22.973869,
         "lon": -46.997579
@@ -75,7 +75,7 @@ var unidadesDeSaude = [
         "nome": "Centro de Especialidades de Valinhos (CEV) 2 - Decio Zenone",
         "unidade": "CEV 2",
         "endereco": "Rua João Bissoto Filho, 21",
-        "telefone ": "(19) 3869-8367",
+        "telefone": "(19) 3869-8367",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.975623,
         "lon": -46.988091
@@ -85,7 +85,7 @@ var unidadesDeSaude = [
         "nome": "Centro de Especialidades de Valinhos (CEV) 3",
         "unidade": "CEV 3",
         "endereco": "Rua Luiz Moscatini, 34",
-        "telefone ": "(19) 3871-3509",
+        "telefone": "(19) 3871-3509",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.945818,
         "lon": -46.982034
@@ -95,7 +95,7 @@ var unidadesDeSaude = [
         "nome": "CRAS CENTRAL",
         "unidade": "CRAS CENTRAL",
         "endereco": "Rua Silvio Concon, 78",
-        "telefone ": "(19) 3859-2100",
+        "telefone": "(19) 3859-2100",
         "horario": "das 8h30 às 16 horas",
         "lat": -22.96972,
         "lon": -46.997348
@@ -105,7 +105,7 @@ var unidadesDeSaude = [
         "nome": "Centro de Referência em Atendimento Psicossocial (CREAPS)",
         "unidade": "CENTRO MUN. DE ATENDIMENTO PSICOPEDAGÓGICO",
         "endereco": "",
-        "telefone ": "(19) 3829-2073",
+        "telefone": "(19) 3829-2073",
         "horario": "Segunda a sexta-feira, das 08h às 16h30",
         "lat": -22.981978,
         "lon": -46.983017
@@ -115,7 +115,7 @@ var unidadesDeSaude = [
         "nome": "SECRETARIA DA SAÚDE",
         "unidade": "FARMÁCIA CENTRAL",
         "endereco": "Rua Itália, 477",
-        "telefone ": "(19) 3849-7070",
+        "telefone": "(19) 3849-7070",
         "horario": "Segunda a sexta-feira, das 07h30 às 16h",
         "lat": -22.973008,
         "lon": -46.999693
@@ -125,7 +125,7 @@ var unidadesDeSaude = [
         "nome": "FARMÁCIA DO POVO",
         "unidade": "FARMÁCIA DO POVO",
         "endereco": "Avenida dos Esportes nº 50 - Centro",
-        "telefone ": "—",
+        "telefone": "—",
         "horario": "SUS e Alto Custo<br>Horário de atendimento: segunda a sexta-feira, das 7h30 às 16h<br>Expediente administrativo: segunda a sexta-feira, das 7h às 17h<br><br>Mandado Judicial<br>Horário de atendimento: segunda a sexta-feira, das 8h às 11h e das 13h às 16h<br>Terça e sexta: livre demanda<br>Segunda, quarta e quinta: pacientes agendados",
         "lat": -22.971412,
         "lon": -46.994869
@@ -135,7 +135,7 @@ var unidadesDeSaude = [
         "nome": "UBS PINHEIROS \u2013 Dr. Luiz Tozzo Filho",
         "unidade": "UBS PINHEIROS",
         "endereco": "Rua Horácio Salles Cunha, 258",
-        "telefone ": "(19) 3871-2218",
+        "telefone": "(19) 3871-2218",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.962735,
         "lon": -46.982124
@@ -145,7 +145,7 @@ var unidadesDeSaude = [
         "nome": "UBS VILA SANTANA \u2013 Dr. Silvio Jos\u00e9 Olivo",
         "unidade": "UBS VILA SANTANA",
         "endereco": "Avenida Brasil, 144",
-        "telefone ": "(19) 3829-5678 (19) 3829-5686",
+        "telefone": "(19) 3829-5678 (19) 3829-5686",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.965973,
         "lon": -46.993615
@@ -155,7 +155,7 @@ var unidadesDeSaude = [
         "nome": "UBS BOM RETIRO \u2013 Durvalina Pinheiro Favarin",
         "unidade": "UBS BOM RETIRO",
         "endereco": "Rua Joaquim Simões Salgueiro, 16",
-        "telefone ": "(19) 3871-5364 (19) 3849-1526",
+        "telefone": "(19) 3871-5364 (19) 3849-1526",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.980272,
         "lon": -46.986455
@@ -165,7 +165,7 @@ var unidadesDeSaude = [
         "nome": "UBS PARQUE PORTUGAL \u2013 Eng. Arthur Bryan Walker",
         "unidade": "UBS PARQUE PORTUGAL",
         "endereco": "Rua Abrantes, 550",
-        "telefone ": "(19) 3849-5708",
+        "telefone": "(19) 3849-5708",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.918087,
         "lon": -46.971213
@@ -175,7 +175,7 @@ var unidadesDeSaude = [
         "nome": "UBS PARA\u00cdSO \u2013 Helena Maria Joana Brandi",
         "unidade": "UBS PARAÍSO",
         "endereco": "Ruas das Acácias, s/n º",
-        "telefone ": "(19) 3929-6040 (19) 3869-3977",
+        "telefone": "(19) 3929-6040 (19) 3869-3977",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.949672,
         "lon": -46.9794
@@ -185,7 +185,7 @@ var unidadesDeSaude = [
         "nome": "UBS VILA IT\u00c1LIA - Ilidio de Albuquerque Cabral",
         "unidade": "UBS VILA ITÁLIA",
         "endereco": "Rua Alexandre Pedroni, 137",
-        "telefone ": "(19) 3869-8976",
+        "telefone": "(19) 3869-8976",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.974627,
         "lon": -47.00361
@@ -195,7 +195,7 @@ var unidadesDeSaude = [
         "nome": "UBS JUREMA \u2013 Jos\u00e9 Gasparim",
         "unidade": "UBS JUREMA",
         "endereco": "Rua José Salles Pupo, 71",
-        "telefone ": "(19) 3929-6928",
+        "telefone": "(19) 3929-6928",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.955658,
         "lon": -47.00785
@@ -205,7 +205,7 @@ var unidadesDeSaude = [
         "nome": "UBS MACUCO - Fumio Iamazaki",
         "unidade": "UBS MACUCO",
         "endereco": "Rua Valdemar Lazaretti, 269",
-        "telefone ": "(19) 3881-2828 (19) 3881-2336",
+        "telefone": "(19) 3881-2828 (19) 3881-2336",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.998943,
         "lon": -47.047852
@@ -215,7 +215,7 @@ var unidadesDeSaude = [
         "nome": "UBS MARACAN\u00c3 - Jo\u00e3o Zanucchi",
         "unidade": "UBS MARACANÃ",
         "endereco": "Rua Pedro de Lucca, 285",
-        "telefone ": "(19) 3871-0679",
+        "telefone": "(19) 3871-0679",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.996893,
         "lon": -46.994555
@@ -225,7 +225,7 @@ var unidadesDeSaude = [
         "nome": "UBS S\u00c3O BENTO \u2013 Prof. M\u00e1rio Pires",
         "unidade": "UBS SÃO BENTO",
         "endereco": "Rua Itajaí, 70",
-        "telefone ": "(19) 3849-7476 (19) 3869-9443",
+        "telefone": "(19) 3849-7476 (19) 3869-9443",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.962156,
         "lon": -46.918929
@@ -235,7 +235,7 @@ var unidadesDeSaude = [
         "nome": "UBS REFORMA AGR\u00c1RIA",
         "unidade": "UBS REFORMA AGRÁRIA",
         "endereco": "Estrada Padre Modesto Nunes, 15",
-        "telefone ": "(19) 3881-2611",
+        "telefone": "(19) 3881-2611",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -23.009742,
         "lon": -47.07148
@@ -245,7 +245,7 @@ var unidadesDeSaude = [
         "nome": "UBS FRUTAL \u2013 Ronildo Bento",
         "unidade": "UBS FRUTAL",
         "endereco": "Rua Julia Lovisaro Vicentini, 2.100",
-        "telefone ": "(19) 3859-1721 (19) 3849-0802",
+        "telefone": "(19) 3859-1721 (19) 3849-0802",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.938867,
         "lon": -46.971687
@@ -255,7 +255,7 @@ var unidadesDeSaude = [
         "nome": "UBS PINHEIROS \u2013 Rosina Tom\u00e9 Calzavara",
         "unidade": "UBS IMPERIAL",
         "endereco": "Rua Campinas, 633",
-        "telefone ": "(19) 3871-3131 (19) 3829-1757 (19) 3869-7957",
+        "telefone": "(19) 3871-3131 (19) 3829-1757 (19) 3869-7957",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.982635,
         "lon": -46.996448
@@ -265,7 +265,7 @@ var unidadesDeSaude = [
         "nome": "UBS S\u00c3O MARCOS \u2013 Vereador Jos\u00e9 Eduardo Franco de Moraes \"Zel\u00e3o\"",
         "unidade": "UBS SÃO MARCOS",
         "endereco": "Rua Cinco, s/nº",
-        "telefone ": "(19) 3871-4517",
+        "telefone": "(19) 3871-4517",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.942343,
         "lon": -46.994834
@@ -275,7 +275,7 @@ var unidadesDeSaude = [
         "nome": "Unidade de Saúde Jardim São Marcos",
         "unidade": "ESTRATÉGIA SAÚDE DA FAMÍLIA",
         "endereco": "Rua três, s/nº",
-        "telefone ": "(19) 3871-1902",
+        "telefone": "(19) 3871-1902",
         "horario": "Segunda a sexta-feira, das 08h às 17h",
         "lat": -22.942967,
         "lon": -46.9943
@@ -285,7 +285,7 @@ var unidadesDeSaude = [
         "nome": "UPA 24H \u2013 Prefeito Jos\u00e9 Spadaccia \"Bepe\"",
         "unidade": "UPA 24H",
         "endereco": "Av. Gessy Lever, 550",
-        "telefone ": "(19) 3849-3753",
+        "telefone": "(19) 3849-3753",
         "horario": "24 horas, todos os dias",
         "lat": -22.963264,
         "lon": -46.993746
@@ -295,7 +295,7 @@ var unidadesDeSaude = [
         "nome": "MATERNO INFANTIL \u2013 UPAMI 24h",
         "unidade": "UPA MATERNO INFANTIL",
         "endereco": "Av. Brasil, 53",
-        "telefone ": "(19) 3869-1422",
+        "telefone": "(19) 3869-1422",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.96689,
         "lon": -46.993521

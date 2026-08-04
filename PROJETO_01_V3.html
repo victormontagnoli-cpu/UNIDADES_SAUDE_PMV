@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prefeitura Municipal de Valinhos - Secretaria da Saúde</title>
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        /* ===== Cabeçalho ===== */
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 16px 24px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        header img.brasao {
+            height: 70px;
+            width: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        header .titulo-header h1 {
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        header .titulo-header h2 {
+            font-size: 15px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-top: 4px;
+            color: #d9e8ff;
+        }
+
+        /* ===== Barra de filtros / botões ===== */
+        .filtros {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px 16px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .filtro-btn {
+            border: 2px solid #0056b3;
+            background-color: #ffffff;
+            color: #0056b3;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+        }
+
+        .filtro-btn:hover {
+            background-color: #e6f0ff;
+        }
+
+        .filtro-btn:active {
+            transform: scale(0.97);
+        }
+
+        .filtro-btn.active {
+            background-color: #0056b3;
+            color: #ffffff;
+        }
+
+        /* ===== Área principal: mapa (esquerda) + painel de informações (direita) ===== */
+        .main-container {
+            display: flex;
+            flex: 1;
+            width: 100%;
+            padding: 24px;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .mapa-wrapper {
+            flex: 1 1 55%;
+            min-width: 320px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Moldura do mapa */
+        #map {
+            width: 100%;
+            height: 600px;
+            border: 8px solid #ffffff;
+            outline: 3px solid #0056b3;
+            border-radius: 6px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+        }
+
+        /* ===== Painel de informações (direita) ===== */
+        .painel-info {
+            flex: 1 1 40%;
+            min-width: 300px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .painel-info h3 {
+            color: #0056b3;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 8px;
+        }
+
+        .painel-vazio {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .unidade-card {
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #0056b3;
+            border-radius: 6px;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            background-color: #f9fbff;
+        }
+
+        .unidade-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .unidade-card .unidade-nome {
+            font-weight: bold;
+            color: #0056b3;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .unidade-card .unidade-linha {
+            font-size: 13px;
+            color: #333;
+            margin-top: 2px;
+        }
+
+        .unidade-card .unidade-linha strong {
+            color: #555;
+        }
+
+        /* Lista de unidades clicáveis dentro de uma categoria */
+        .unidade-item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            background-color: #ffffff;
+            color: #0056b3;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .unidade-item:hover {
+            background-color: #e6f0ff;
+        }
+
+        .unidade-item.selecionada {
+            background-color: #0056b3;
+            color: #ffffff;
+            border-color: #0056b3;
+        }
+
+        .unidade-item .sem-geo {
+            display: block;
+            font-weight: normal;
+            font-size: 11px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        .unidade-item.selecionada .sem-geo {
+            color: #d9e8ff;
+        }
+
+        /* Card de detalhes (popup) da unidade selecionada */
+        .detalhe-card {
+            margin-top: 16px;
+            border: 2px solid #0056b3;
+            border-radius: 8px;
+            padding: 14px 16px;
+            background-color: #f0f6ff;
+        }
+
+        .detalhe-card .detalhe-titulo {
+            font-size: 16px;
+            font-weight: bold;
+            color: #0056b3;
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #b9d3f2;
+        }
+
+        .detalhe-card .detalhe-linha {
+            font-size: 13px;
+            color: #333;
+            margin-top: 4px;
+        }
+
+        .detalhe-card .detalhe-linha strong {
+            color: #0056b3;
+        }
+
+        .detalhe-card .detalhe-aviso {
+            font-size: 12px;
+            color: #a15c00;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* ===== Popup de detalhes no mapa (Leaflet) ===== */
+        .leaflet-popup-content {
+            margin: 12px 14px;
+        }
+
+        .leaflet-popup-content .popup-titulo {
+            font-weight: bold;
+            color: #0056b3;
+            font-size: 14px;
+            margin-bottom: 6px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #b9d3f2;
+        }
+
+        .leaflet-popup-content .popup-linha {
+            font-size: 12px;
+            color: #333;
+            margin-top: 3px;
+        }
+
+        .leaflet-popup-content .popup-linha strong {
+            color: #0056b3;
+        }
+
+        /* ===== Buscar minha UBS/UPA ===== */
+        .busca-ubs-container {
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        .busca-ubs-btn {
+            display: block;
+            width: 100%;
+            border: none;
+            background-color: #0056b3;
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 18px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .busca-ubs-btn:hover {
+            background-color: #00408a;
+        }
+
+        .busca-ubs-btn:active {
+            transform: scale(0.99);
+        }
+
+        .busca-ubs-painel {
+            margin-top: 12px;
+            background-color: #ffffff;
+            border: 2px solid #0056b3;
+            border-radius: 8px;
+            padding: 16px 18px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .busca-ubs-painel[hidden] {
+            display: none;
+        }
+
+        .busca-ubs-label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            color: #0056b3;
+            margin-bottom: 8px;
+        }
+
+        .busca-ubs-form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .busca-ubs-input {
+            flex: 1 1 220px;
+            font-size: 15px;
+            padding: 10px 12px;
+            border: 2px solid #cddcee;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .busca-ubs-input:focus {
+            border-color: #0056b3;
+        }
+
+        .busca-ubs-submit {
+            border: none;
+            background-color: #0056b3;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 10px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .busca-ubs-submit:hover {
+            background-color: #00408a;
+        }
+
+        .busca-ubs-submit:disabled,
+        .busca-ubs-input:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .busca-ubs-resultado {
+            margin-top: 12px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .busca-ubs-resultado.sucesso {
+            color: #1c6b1c;
+        }
+
+        .busca-ubs-resultado.erro {
+            color: #a15c00;
+        }
+
+        .busca-ubs-resultado.aviso {
+            color: #666;
+        }
+
+        @media (max-width: 800px) {
+            .main-container {
+                flex-direction: column;
+            }
+            #map {
+                height: 420px;
+            }
+            .busca-ubs-btn {
+                font-size: 18px;
+                padding: 14px 16px;
+            }
+        }
+
+        /* ===== Rodapé ===== */
+        footer {
+            background-color: #0056b3; /* mesma cor institucional do cabeçalho */
+            color: white;
+            padding: 18px 24px;
+            text-align: center;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            margin-top: auto;
+        }
+
+        footer .rodape-titulo {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        footer .rodape-info {
+            font-size: 13px;
+            color: #d9e8ff;
+            line-height: 1.6;
+            white-space: normal;
+        }
+
+        footer .rodape-info a {
+            color: #d9e8ff;
+            text-decoration: underline;
+        }
+
+        footer .rodape-info a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img
+            class="brasao"
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Brasao-Valinhos.svg"
+            alt="Brasão da Prefeitura Municipal de Valinhos"
+        >
+        <div class="titulo-header">
+            <h1>PREFEITURA MUNICIPAL DE VALINHOS</h1>
+            <h2>Secretaria de Saúde</h2>
+        </div>
+    </header>
+
+    <nav class="filtros" aria-label="Filtro de unidades de saúde">
+        <button class="filtro-btn" data-tipo="ubs-upa">UBS / UPA</button>
+        <button class="filtro-btn" data-tipo="cev">CEV</button>
+        <button class="filtro-btn" data-tipo="farmacia">Farmácia</button>
+        <button class="filtro-btn" data-tipo="caps">CAPS</button>
+        <button class="filtro-btn" data-tipo="cras">CRAS</button>
+    </nav>
+
+    <div class="main-container">
+        <div class="mapa-wrapper" style="flex-direction: column;">
+            <div class="busca-ubs-container">
+                <button type="button" class="busca-ubs-btn" id="btn-buscar-ubs">Buscar minha UBS/UPA</button>
+
+                <div class="busca-ubs-painel" id="busca-ubs-painel" hidden>
+                    <label class="busca-ubs-label" for="busca-ubs-input">Digite seu CEP ou o nome da rua (logradouro):</label>
+                    <div class="busca-ubs-form">
+                        <input
+                            type="text"
+                            id="busca-ubs-input"
+                            class="busca-ubs-input"
+                            placeholder="Ex.: 13270-005 ou Rua Itália"
+                            disabled
+                        >
+                        <button type="button" id="busca-ubs-submit" class="busca-ubs-submit" disabled>Buscar</button>
+                    </div>
+                    <div id="busca-ubs-resultado" class="busca-ubs-resultado" aria-live="polite"></div>
+                </div>
+            </div>
+
+            <div id="map"></div>
+        </div>
+
+        <aside class="painel-info" id="painel-info">
+            <h3>Selecione a unidade</h3>
+            <p class="painel-vazio" id="painel-vazio">Selecione uma categoria acima para ver as unidades disponíveis.</p>
+            <div id="lista-unidades"></div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="rodape-titulo">Secretaria de Saúde</div>
+        <div class="rodape-info">
+            Funcionamento: Segunda a sexta-feira, das 8h30 às 16 horas &nbsp;-&nbsp;
+            Telefone: (19) 3869-9518 / (19) 3869-9513 &nbsp;-&nbsp;
+            <a href="mailto:saude@valinhos.sp.gov.br">saude@valinhos.sp.gov.br</a> &nbsp;-&nbsp;
+            Rua Itália, 477 - Jardim Ribeiro - CEP 13274-465
+        </div>
+    </footer>
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

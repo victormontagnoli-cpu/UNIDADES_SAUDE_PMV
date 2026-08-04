@@ -232,9 +232,9 @@ var unidadesDeSaude = [
     },
     {
         "categoria": "ubs-upa",
-        "nome": "UBS REFORMA AGRÁRIA\u00c1RIA",
+        "nome": "UBS REFORMA AGR\u00c1RIA",
         "unidade": "UBS REFORMA AGRÁRIA",
-        "endereco": "Núcleo Reforma Agrária, s/nº",
+        "endereco": "Estr. Padre Modesto Nunes, 15",
         "telefone": "(19) 3881-2611",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -23.009742,

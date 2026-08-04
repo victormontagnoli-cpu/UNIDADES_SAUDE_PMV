@@ -232,7 +232,7 @@ var unidadesDeSaude = [
     },
     {
         "categoria": "ubs-upa",
-        "nome": "UBS IMPERIAL -  REFORMA AGR\u00c1RIA",
+        "nome": "UBS REFORMA AGRÁRIA\u00c1RIA",
         "unidade": "UBS REFORMA AGRÁRIA",
         "endereco": "Núcleo Reforma Agrária, s/nº",
         "telefone": "(19) 3881-2611",

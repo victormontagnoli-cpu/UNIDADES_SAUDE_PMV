@@ -35,7 +35,7 @@ var unidadesDeSaude = [
         "nome": "CAPS 2",
         "unidade": "CAPS II ESPERANÇA",
         "endereco": "Rua Casimiro de Abreu, 196",
-        "telefone": "(19) 3829-2524 (19) 3849-1335",
+        "telefone": "(19) 3829-2524 / (19) 3849-1335",
         "horario": "Segunda a sexta-feira, das 08h às 17h",
         "lat": -22.979123,
         "lon": -46.995597
@@ -45,7 +45,7 @@ var unidadesDeSaude = [
         "nome": "CAPS Infantil",
         "unidade": "CAPS INFANTIL",
         "endereco": "Rua Casimiro de Abreu, 138",
-        "telefone": "(19) 3829-3457 (19) 3849-4623",
+        "telefone": "(19) 3829-3457 / (19) 3849-4623",
         "horario": "Segunda a sexta-feira, das 08h às 17h",
         "lat": -22.978757,
         "lon": -46.996026
@@ -145,7 +145,7 @@ var unidadesDeSaude = [
         "nome": "UBS VILA SANTANA \u2013 Dr. Silvio Jos\u00e9 Olivo",
         "unidade": "UBS VILA SANTANA",
         "endereco": "Avenida Brasil, 144",
-        "telefone": "(19) 3829-5678 (19) 3829-5686",
+        "telefone": "(19) 3829-5678 / (19) 3829-5686",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.965973,
         "lon": -46.993615
@@ -155,7 +155,7 @@ var unidadesDeSaude = [
         "nome": "UBS BOM RETIRO \u2013 Durvalina Pinheiro Favarin",
         "unidade": "UBS BOM RETIRO",
         "endereco": "Rua Joaquim Simões Salgueiro, 16",
-        "telefone": "(19) 3871-5364 (19) 3849-1526",
+        "telefone": "(19) 3871-5364 / (19) 3849-1526",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.980272,
         "lon": -46.986455
@@ -175,7 +175,7 @@ var unidadesDeSaude = [
         "nome": "UBS PARA\u00cdSO \u2013 Helena Maria Joana Brandi",
         "unidade": "UBS PARAÍSO",
         "endereco": "Ruas das Acácias, s/n º",
-        "telefone": "(19) 3929-6040 (19) 3869-3977",
+        "telefone": "(19) 3929-6040 / (19) 3869-3977",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.949672,
         "lon": -46.9794
@@ -205,7 +205,7 @@ var unidadesDeSaude = [
         "nome": "UBS MACUCO - Fumio Iamazaki",
         "unidade": "UBS MACUCO",
         "endereco": "Rua Valdemar Lazaretti, 269",
-        "telefone": "(19) 3881-2828 (19) 3881-2336",
+        "telefone": "(19) 3881-2828 / (19) 3881-2336",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.998943,
         "lon": -47.047852
@@ -225,7 +225,7 @@ var unidadesDeSaude = [
         "nome": "UBS S\u00c3O BENTO \u2013 Prof. M\u00e1rio Pires",
         "unidade": "UBS SÃO BENTO",
         "endereco": "Rua Itajaí, 70",
-        "telefone": "(19) 3849-7476 (19) 3869-9443",
+        "telefone": "(19) 3849-7476 / (19) 3869-9443",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.962156,
         "lon": -46.918929
@@ -245,7 +245,7 @@ var unidadesDeSaude = [
         "nome": "UBS FRUTAL \u2013 Ronildo Bento",
         "unidade": "UBS FRUTAL",
         "endereco": "Rua Julia Lovisaro Vicentini, 2.100",
-        "telefone": "(19) 3859-1721 (19) 3849-0802",
+        "telefone": "(19) 3859-1721 / (19) 3849-0802",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.938867,
         "lon": -46.971687
@@ -255,7 +255,7 @@ var unidadesDeSaude = [
         "nome": "UBS PINHEIROS \u2013 Rosina Tom\u00e9 Calzavara",
         "unidade": "UBS IMPERIAL",
         "endereco": "Rua Campinas, 633",
-        "telefone": "(19) 3871-3131 (19) 3829-1757 (19) 3869-7957",
+        "telefone": "(19) 3871-3131 / (19) 3829-1757 / (19) 3869-7957",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.982635,
         "lon": -46.996448

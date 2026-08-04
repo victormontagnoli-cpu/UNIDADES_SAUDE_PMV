@@ -264,7 +264,7 @@ var unidadesDeSaude = [
         "categoria": "ubs-upa",
         "nome": "UBS S\u00c3O MARCOS \u2013 Vereador Jos\u00e9 Eduardo Franco de Moraes \"Zel\u00e3o\"",
         "unidade": "UBS SÃO MARCOS",
-        "endereco": "Rua Cinco, s/nº",
+        "endereco": "Rua Vereador Sérgio Ricardo Viana Siqueira, 516",
         "telefone": "(19) 3871-4517",
         "horario": "Segunda a sexta-feira, das 07h às 16h",
         "lat": -22.942343,

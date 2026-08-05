@@ -343,8 +343,13 @@
             flex-wrap: wrap;
         }
 
-        .busca-ubs-input {
+        .busca-ubs-input-wrapper {
+            position: relative;
             flex: 1 1 220px;
+        }
+
+        .busca-ubs-input {
+            width: 100%;
             font-size: 15px;
             padding: 10px 12px;
             border: 2px solid #cddcee;
@@ -354,6 +359,63 @@
 
         .busca-ubs-input:focus {
             border-color: #0056b3;
+        }
+
+        /* ===== Caixa de sugestões (prévia de preenchimento) ===== */
+        .busca-ubs-sugestoes {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            border: 2px solid #0056b3;
+            border-radius: 8px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+            list-style: none;
+            max-height: 260px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .busca-ubs-sugestoes[hidden] {
+            display: none;
+        }
+
+        .busca-ubs-sugestoes li {
+            padding: 9px 14px;
+            font-size: 13px;
+            color: #333;
+            cursor: pointer;
+            border-bottom: 1px solid #eef2f8;
+        }
+
+        .busca-ubs-sugestoes li:last-child {
+            border-bottom: none;
+        }
+
+        .busca-ubs-sugestoes li:hover,
+        .busca-ubs-sugestoes li.sugestao-ativa {
+            background-color: #e6f0ff;
+        }
+
+        .busca-ubs-sugestoes li .sugestao-rua {
+            display: block;
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .busca-ubs-sugestoes li .sugestao-rua mark {
+            background-color: #ffe58a;
+            color: inherit;
+            border-radius: 2px;
+        }
+
+        .busca-ubs-sugestoes li .sugestao-ubs {
+            display: block;
+            font-size: 11px;
+            font-weight: normal;
+            color: #777;
+            margin-top: 2px;
         }
 
         .busca-ubs-submit {
@@ -474,13 +536,17 @@
                 <div class="busca-ubs-painel" id="busca-ubs-painel" hidden>
                     <label class="busca-ubs-label" for="busca-ubs-input">Digite seu CEP ou o nome da rua (logradouro):</label>
                     <div class="busca-ubs-form">
-                        <input
-                            type="text"
-                            id="busca-ubs-input"
-                            class="busca-ubs-input"
-                            placeholder="Ex.: 13270-005 ou Rua Itália"
-                            disabled
-                        >
+                        <div class="busca-ubs-input-wrapper">
+                            <input
+                                type="text"
+                                id="busca-ubs-input"
+                                class="busca-ubs-input"
+                                placeholder="Ex.: 13270-005 ou Rua Itália"
+                                autocomplete="off"
+                                disabled
+                            >
+                            <ul id="busca-ubs-sugestoes" class="busca-ubs-sugestoes" hidden></ul>
+                        </div>
                         <button type="button" id="busca-ubs-submit" class="busca-ubs-submit" disabled>Buscar</button>
                     </div>
                     <div id="busca-ubs-resultado" class="busca-ubs-resultado" aria-live="polite"></div>

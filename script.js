@@ -475,6 +475,8 @@ var painelBuscaUBS = document.getElementById('busca-ubs-painel');
 var inputBuscaUBS = document.getElementById('busca-ubs-input');
 var submitBuscaUBS = document.getElementById('busca-ubs-submit');
 var resultadoBuscaUBS = document.getElementById('busca-ubs-resultado');
+var sugestoesBuscaUBS = document.getElementById('busca-ubs-sugestoes');
+var indiceSugestaoAtiva = -1;
 
 function normalizar(str) {
     if (!str) return '';
@@ -681,6 +683,141 @@ function buscarEnderecoReferencia(entrada) {
     return null;
 }
 
+// ===================================================================
+// CAIXA DE PRÉVIA DE PREENCHIMENTO (autocomplete)
+// Enquanto o usuário digita, sugere logradouros do
+// UBS_REFERENCIA.csv que combinam com o texto ou com o CEP digitado.
+// ===================================================================
+
+// Retorna até `limite` logradouros do CSV cujo nome começa com o termo
+// digitado (prioridade) ou apenas contém o termo em algum lugar,
+// sem repetir o mesmo logradouro duas vezes.
+function obterSugestoesPorNome(entrada, limite) {
+    var termo = normalizar(prepararTermoBusca(entrada));
+    if (!termo) return [];
+
+    var vistos = {};
+    var comecaCom = [];
+    var contem = [];
+
+    referenciaEnderecos.forEach(function (e) {
+        var chave = e.l.toLowerCase();
+        if (vistos[chave]) return;
+
+        var bateComeco = e.nf.indexOf(termo) === 0 || (e.ns && e.ns.indexOf(termo) === 0);
+        var bateContem = !bateComeco && (e.nf.indexOf(termo) !== -1 || (e.ns && e.ns.indexOf(termo) !== -1));
+
+        if (bateComeco || bateContem) {
+            vistos[chave] = true;
+            (bateComeco ? comecaCom : contem).push(e);
+        }
+    });
+
+    var ordenarPorTamanho = function (a, b) { return a.l.length - b.l.length; };
+    comecaCom.sort(ordenarPorTamanho);
+    contem.sort(ordenarPorTamanho);
+
+    return comecaCom.concat(contem).slice(0, limite);
+}
+
+// Retorna até `limite` logradouros cujo CEP começa com os dígitos digitados.
+function obterSugestoesPorCep(digitos, limite) {
+    var vistos = {};
+    var resultado = [];
+
+    referenciaEnderecos.forEach(function (e) {
+        var chave = e.l.toLowerCase();
+        if (vistos[chave]) return;
+
+        var bate = e.cep.some(function (c) { return c.indexOf(digitos) === 0; });
+        if (bate) {
+            vistos[chave] = true;
+            resultado.push(e);
+        }
+    });
+
+    resultado.sort(function (a, b) { return a.l.length - b.l.length; });
+    return resultado.slice(0, limite);
+}
+
+function obterSugestoes(entrada) {
+    var limite = 8;
+    var digitos = apenasDigitos(entrada);
+    var soTemDigitosEPontuacao = /^[\d\s\-.]+$/.test(entrada.trim());
+
+    if (soTemDigitosEPontuacao) {
+        return digitos.length >= 3 ? obterSugestoesPorCep(digitos, limite) : [];
+    }
+
+    return obterSugestoesPorNome(entrada, limite);
+}
+
+// Envolve, dentro do nome do logradouro, o trecho que corresponde ao
+// termo digitado em <mark>, para destacar a prévia (mantém acentos e
+// caixa originais do CSV, só usa a busca normalizada para achar a posição).
+function destacarTrecho(nomeLogradouro, termoDigitado) {
+    var termo = prepararTermoBusca(termoDigitado).trim();
+    if (!termo) return nomeLogradouro;
+
+    var posicao = normalizar(nomeLogradouro).indexOf(normalizar(termo));
+    if (posicao === -1) return nomeLogradouro;
+
+    var antes = nomeLogradouro.slice(0, posicao);
+    var meio = nomeLogradouro.slice(posicao, posicao + termo.length);
+    var depois = nomeLogradouro.slice(posicao + termo.length);
+    return antes + '<mark>' + meio + '</mark>' + depois;
+}
+
+function fecharSugestoes() {
+    sugestoesBuscaUBS.setAttribute('hidden', '');
+    sugestoesBuscaUBS.innerHTML = '';
+    indiceSugestaoAtiva = -1;
+}
+
+function selecionarSugestao(entrada) {
+    inputBuscaUBS.value = entrada.l;
+    fecharSugestoes();
+    executarBuscaUBS();
+}
+
+function marcarSugestaoAtiva() {
+    var itens = sugestoesBuscaUBS.querySelectorAll('li');
+    itens.forEach(function (li, i) {
+        li.classList.toggle('sugestao-ativa', i === indiceSugestaoAtiva);
+    });
+    if (indiceSugestaoAtiva >= 0 && itens[indiceSugestaoAtiva]) {
+        itens[indiceSugestaoAtiva].scrollIntoView({ block: 'nearest' });
+    }
+}
+
+function renderizarSugestoes(lista, termoDigitado) {
+    sugestoesBuscaUBS.innerHTML = '';
+    indiceSugestaoAtiva = -1;
+
+    if (!lista.length) {
+        fecharSugestoes();
+        return;
+    }
+
+    lista.forEach(function (endereco) {
+        var li = document.createElement('li');
+        li.innerHTML =
+            '<span class="sugestao-rua">' + destacarTrecho(endereco.l, termoDigitado) + '</span>' +
+            '<span class="sugestao-ubs">Referência: ' + endereco.ubs + '</span>';
+
+        // usa "mousedown" (em vez de "click") para que a seleção seja
+        // processada antes do input perder o foco e fechar a lista
+        li.addEventListener('mousedown', function (evento) {
+            evento.preventDefault();
+            selecionarSugestao(endereco);
+        });
+
+        sugestoesBuscaUBS.appendChild(li);
+    });
+
+    sugestoesBuscaUBS.removeAttribute('hidden');
+}
+
 function selecionarUBSNoPainel(unidadeCodigo) {
     var indice = -1;
     for (var i = 0; i < unidadesDeSaude.length; i++) {
@@ -752,17 +889,68 @@ btnBuscarUBS.addEventListener('click', function () {
     var estaVisivel = !painelBuscaUBS.hasAttribute('hidden');
     if (estaVisivel) {
         painelBuscaUBS.setAttribute('hidden', '');
+        fecharSugestoes();
     } else {
         painelBuscaUBS.removeAttribute('hidden');
         inputBuscaUBS.focus();
     }
 });
 
-submitBuscaUBS.addEventListener('click', executarBuscaUBS);
+submitBuscaUBS.addEventListener('click', function () {
+    fecharSugestoes();
+    executarBuscaUBS();
+});
+
+inputBuscaUBS.addEventListener('input', function () {
+    resultadoBuscaUBS.className = 'busca-ubs-resultado';
+    resultadoBuscaUBS.textContent = '';
+
+    var termo = inputBuscaUBS.value.trim();
+    if (!referenciaCarregada || termo.length < 2) {
+        fecharSugestoes();
+        return;
+    }
+
+    renderizarSugestoes(obterSugestoes(termo), termo);
+});
 
 inputBuscaUBS.addEventListener('keydown', function (evento) {
+    var itens = sugestoesBuscaUBS.querySelectorAll('li');
+
+    if (evento.key === 'ArrowDown' && itens.length) {
+        evento.preventDefault();
+        indiceSugestaoAtiva = (indiceSugestaoAtiva + 1) % itens.length;
+        marcarSugestaoAtiva();
+        return;
+    }
+
+    if (evento.key === 'ArrowUp' && itens.length) {
+        evento.preventDefault();
+        indiceSugestaoAtiva = (indiceSugestaoAtiva - 1 + itens.length) % itens.length;
+        marcarSugestaoAtiva();
+        return;
+    }
+
+    if (evento.key === 'Escape') {
+        fecharSugestoes();
+        return;
+    }
+
     if (evento.key === 'Enter') {
         evento.preventDefault();
-        executarBuscaUBS();
+        if (indiceSugestaoAtiva >= 0 && itens[indiceSugestaoAtiva]) {
+            itens[indiceSugestaoAtiva].dispatchEvent(new Event('mousedown'));
+        } else {
+            fecharSugestoes();
+            executarBuscaUBS();
+        }
+    }
+});
+
+// fecha a lista ao clicar fora do campo de busca / da própria lista
+document.addEventListener('click', function (evento) {
+    var dentroDoCampo = evento.target === inputBuscaUBS || sugestoesBuscaUBS.contains(evento.target);
+    if (!dentroDoCampo) {
+        fecharSugestoes();
     }
 });

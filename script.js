@@ -378,13 +378,19 @@ function selecionarUnidade(indice, botaoClicado) {
         map.setView([unidade.lat, unidade.lon], 18);
         marcadorSelecionado = L.marker([unidade.lat, unidade.lon]).addTo(map);
 
+        var linkGoogleMaps =
+            'https://www.google.com/maps/search/?api=1&query=' + unidade.lat + ',' + unidade.lon;
+
         var popupHTML =
             '<div class="popup-titulo">' + unidade.nome + '</div>' +
             '<div class="popup-linha"><strong>Endereço:</strong> ' + (unidade.endereco || '—') + '</div>' +
             '<div class="popup-linha"><strong>Telefone:</strong> ' + unidade.telefone + '</div>' +
-            '<div class="popup-linha"><strong>Horário:</strong> ' + unidade.horario + '</div>';
+            '<div class="popup-linha"><strong>Horário:</strong> ' + unidade.horario + '</div>' +
+            '<a class="popup-gmaps-btn" href="' + linkGoogleMaps + '" target="_blank" rel="noopener noreferrer">' +
+                'CLIQUE AQUI PARA PESQUISAR NO GOOGLE MAPS' +
+            '</a>';
 
-        marcadorSelecionado.bindPopup(popupHTML).openPopup();
+        marcadorSelecionado.bindPopup(popupHTML, { minWidth: 220 }).openPopup();
     } else {
         avisoSemGeo = '<div class="detalhe-aviso">Esta unidade ainda não possui coordenadas cadastradas para exibição no mapa.</div>';
     }

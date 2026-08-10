@@ -112,7 +112,7 @@ var unidadesDeSaude = [
     },
     {
         "categoria": "farmacia",
-        "nome": "SECRETARIA DA SAÚDE",
+        "nome": "FARMÁCIA DE ALTO CUSTO",
         "unidade": "FARMÁCIA CENTRAL",
         "endereco": "Rua Itália, 477",
         "telefone": "(19) 3849-7070",

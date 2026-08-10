@@ -272,9 +272,9 @@ var unidadesDeSaude = [
     },
     {
         "categoria": "ubs-upa",
-        "nome": "Unidade de Saúde Jardim São Marcos",
+        "nome": "UNIDADE DE SAÚDE DA FAMÍLIA JARDIM SÃO MARCOS",
         "unidade": "ESTRATÉGIA SAÚDE DA FAMÍLIA",
-        "endereco": "Rua três, s/nº",
+        "endereco": "Rua Irene Speglish Tordin, 66",
         "telefone": "(19) 3871-1902",
         "horario": "Segunda a sexta-feira, das 08h às 17h",
         "lat": -22.942967,

@@ -42,7 +42,7 @@ var unidadesDeSaude = [
     },
     {
         "categoria": "caps",
-        "nome": "CAPS Infantil",
+        "nome": "CAPS INFANTIL",
         "unidade": "CAPS INFANTIL",
         "endereco": "Rua Casimiro de Abreu, 138",
         "telefone": "(19) 3829-3457 / (19) 3849-4623",

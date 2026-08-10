@@ -53,7 +53,7 @@ var unidadesDeSaude = [
     {
         "categoria": "caps",
         "nome": "Centro Municipal de Atendimento Psicopedagógico e Fonoaudiológico (CEMAP) \u201dJosé Natal Capovilla\u201d",
-        "unidade": "CENTRO AMB. SAÚDE MENTAL (ADLSA)",
+        "unidade": "CENTRO AMBIENTAL DE SAÚDE MENTAL DO ADOLESCENTE (CASA)",
         "endereco": "Rua João Moleta, nº 140",
         "telefone": "(19) 3869-1113",
         "horario": "Segunda a sexta-feira, das 07h às 16h",

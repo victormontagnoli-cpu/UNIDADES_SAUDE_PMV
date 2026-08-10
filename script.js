@@ -32,7 +32,7 @@ var marcadorSelecionado = null;
 var unidadesDeSaude = [
     {
         "categoria": "caps",
-        "nome": "CAPS 2",
+        "nome": "CAPS II ADULTO",
         "unidade": "CAPS II ESPERANÇA",
         "endereco": "Rua Casimiro de Abreu, 196",
         "telefone": "(19) 3829-2524 / (19) 3849-1335",

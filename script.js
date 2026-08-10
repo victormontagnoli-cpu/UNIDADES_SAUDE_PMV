@@ -104,7 +104,7 @@ var unidadesDeSaude = [
         "categoria": "caps",
         "nome": "Centro de Referência em Atendimento Psicossocial (CREAPS)",
         "unidade": "CENTRO MUN. DE ATENDIMENTO PSICOPEDAGÓGICO",
-        "endereco": "",
+        "endereco": "RUA Dezessete (17) - Jardim Nova Palmares II",
         "telefone": "(19) 3829-2073",
         "horario": "Segunda a sexta-feira, das 08h às 16h30",
         "lat": -22.981978,

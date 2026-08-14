@@ -172,7 +172,7 @@ var unidadesDeSaude = [
     },
     {
         "categoria": "ubs-upa",
-        "nome": "UBS JARDIM PARA\u00cdSO \u2013 Helena Maria Joana Brandi",
+        "nome": "UBS PARA\u00cdSO \u2013 Helena Maria Joana Brandi",
         "unidade": "UBS PARAÍSO",
         "endereco": "Ruas das Acácias, s/n º",
         "telefone": "(19) 3929-6040 / (19) 3869-3977",

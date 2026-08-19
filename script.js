@@ -92,7 +92,7 @@ var unidadesDeSaude = [
     },
     {
         "categoria": "cras",
-        "nome": "CRAS CENTRAL",
+        "nome": "Centro de Referência de Assistência Social (CRAS) CENTRAL",
         "unidade": "CRAS CENTRAL",
         "endereco": "Rua Silvio Concon, 78",
         "telefone": "(19) 3859-2100",

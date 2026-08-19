@@ -110,6 +110,16 @@ var unidadesDeSaude = [
         "lat": -22.973404,
         "lon": -46.996236
     },
+        {
+        "categoria": "cras",
+        "nome": "Centro de Referência de Assistência Social (CRAS) Figueiras -",
+        "unidade": "CRAS FIGUEIRAS - RENATO ANTONIAZZI",
+        "endereco": "Rua Abraão Martini, nº 51",
+        "telefone": "(19) 3869-3313",
+        "horario": "das 8h30 às 16 horas",
+        "lat": -22.985749,
+        "lon": -46.979152
+    },
     {
         "categoria": "caps",
         "nome": "Centro de Referência em Atendimento Psicossocial (CREAPS)",

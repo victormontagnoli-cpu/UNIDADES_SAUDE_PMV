@@ -104,14 +104,21 @@
             color: #ffffff;
         }
 
-        /* ===== Área principal: mapa (esquerda) + painel de informações (direita) ===== */
+        /* ===== Área principal: barra de busca + mapa (esquerda) + painel de informações (direita) ===== */
         .main-container {
             display: flex;
+            flex-direction: column;
             flex: 1;
             width: 100%;
             padding: 24px;
+            gap: 20px;
+        }
+
+        /* Linha com o mapa e o painel — mesma altura entre os dois (stretch) */
+        .conteudo-row {
+            display: flex;
             gap: 24px;
-            align-items: flex-start;
+            align-items: stretch;
             flex-wrap: wrap;
         }
 
@@ -119,7 +126,6 @@
             flex: 1 1 55%;
             min-width: 320px;
             display: flex;
-            justify-content: center;
         }
 
         /* Moldura do mapa */
@@ -136,11 +142,13 @@
         .painel-info {
             flex: 1 1 40%;
             min-width: 300px;
+            display: flex;
+            flex-direction: column;
             background-color: #ffffff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             padding: 20px;
-            max-height: 600px;
+            height: 600px;
             overflow-y: auto;
         }
 
@@ -479,14 +487,41 @@
 
         @media (max-width: 800px) {
             .main-container {
+                padding: 16px;
+                gap: 16px;
+            }
+            .conteudo-row {
                 flex-direction: column;
+                gap: 16px;
+            }
+            .mapa-wrapper {
+                min-width: 0;
             }
             #map {
-                height: 420px;
+                height: 380px;
+                border-width: 5px;
+            }
+            .painel-info {
+                min-width: 0;
+                height: auto;
+                max-height: 380px;
             }
             .busca-ubs-btn {
                 font-size: 18px;
                 padding: 14px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 12px;
+            }
+            #map {
+                height: 320px;
+            }
+            .painel-info {
+                max-height: 320px;
+                padding: 16px;
             }
         }
 
@@ -629,38 +664,40 @@
     </nav>
 
     <div class="main-container">
-        <div class="mapa-wrapper" style="flex-direction: column;">
-            <div class="busca-ubs-container">
-                <button type="button" class="busca-ubs-btn" id="btn-buscar-ubs">Buscar minha UNIDADE BÁSICA DE SAÚDE (UBS)</button>
+        <div class="busca-ubs-container">
+            <button type="button" class="busca-ubs-btn" id="btn-buscar-ubs">Buscar minha UNIDADE BÁSICA DE SAÚDE (UBS)</button>
 
-                <div class="busca-ubs-painel" id="busca-ubs-painel" hidden>
-                    <label class="busca-ubs-label" for="busca-ubs-input">Digite seu ENDEREÇO RESIDENCIAL ou seu CEP:</label>
-                    <div class="busca-ubs-form">
-                        <div class="busca-ubs-input-wrapper">
-                            <input
-                                type="text"
-                                id="busca-ubs-input"
-                                class="busca-ubs-input"
-                                placeholder="Ex.: 13270-005 ou Rua Itália"
-                                autocomplete="off"
-                                disabled
-                            >
-                            <ul id="busca-ubs-sugestoes" class="busca-ubs-sugestoes" hidden></ul>
-                        </div>
-                        <button type="button" id="busca-ubs-submit" class="busca-ubs-submit" disabled>Buscar</button>
+            <div class="busca-ubs-painel" id="busca-ubs-painel" hidden>
+                <label class="busca-ubs-label" for="busca-ubs-input">Digite seu ENDEREÇO RESIDENCIAL ou seu CEP:</label>
+                <div class="busca-ubs-form">
+                    <div class="busca-ubs-input-wrapper">
+                        <input
+                            type="text"
+                            id="busca-ubs-input"
+                            class="busca-ubs-input"
+                            placeholder="Ex.: 13270-005 ou Rua Itália"
+                            autocomplete="off"
+                            disabled
+                        >
+                        <ul id="busca-ubs-sugestoes" class="busca-ubs-sugestoes" hidden></ul>
                     </div>
-                    <div id="busca-ubs-resultado" class="busca-ubs-resultado" aria-live="polite"></div>
+                    <button type="button" id="busca-ubs-submit" class="busca-ubs-submit" disabled>Buscar</button>
                 </div>
+                <div id="busca-ubs-resultado" class="busca-ubs-resultado" aria-live="polite"></div>
             </div>
-
-            <div id="map"></div>
         </div>
 
-        <aside class="painel-info" id="painel-info">
-            <h3>Selecione a unidade</h3>
-            <p class="painel-vazio" id="painel-vazio">Selecione uma categoria acima para ver as unidades disponíveis.</p>
-            <div id="lista-unidades"></div>
-        </aside>
+        <div class="conteudo-row">
+            <div class="mapa-wrapper">
+                <div id="map"></div>
+            </div>
+
+            <aside class="painel-info" id="painel-info">
+                <h3>Selecione a unidade</h3>
+                <p class="painel-vazio" id="painel-vazio">Selecione uma categoria acima para ver as unidades disponíveis.</p>
+                <div id="lista-unidades"></div>
+            </aside>
+        </div>
     </div>
 
     <div class="portal-siss-wrapper">

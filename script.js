@@ -110,15 +110,25 @@ var unidadesDeSaude = [
         "lat": -22.973404,
         "lon": -46.996236
     },
-        {
+    {
         "categoria": "cras",
-        "nome": "Centro de Referência de Assistência Social (CRAS) Figueiras",
+        "nome": "Centro de Referência de Assistência Social (CRAS) FIGUEIRAS",
         "unidade": "CRAS FIGUEIRAS - RENATO ANTONIAZZI",
         "endereco": "Rua Abraão Martini, nº 51",
         "telefone": "(19) 3869-3313",
         "horario": "das 8h30 às 16 horas",
         "lat": -22.985749,
         "lon": -46.979152
+    },
+        {
+        "categoria": "cras",
+        "nome": "Centro de Referência de Assistência Social (CRAS) SÃO MARCOS",
+        "unidade": "CRAS FIGUEIRAS - RENATO ANTONIAZZI",
+        "endereco": " Rua João Previtale, 2168",
+        "telefone": "3869-3895 / 3869-4057 / 3869-3895 (WhatsApp)",
+        "horario": "das 8h30 às 16 horas",
+        "lat": -22.947740,
+        "lon":  -46.998525
     },
     {
         "categoria": "caps",

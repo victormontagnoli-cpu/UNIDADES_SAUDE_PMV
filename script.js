@@ -112,7 +112,7 @@ var unidadesDeSaude = [
     },
         {
         "categoria": "cras",
-        "nome": "Centro de Referência de Assistência Social (CRAS) Figueiras -",
+        "nome": "Centro de Referência de Assistência Social (CRAS) Figueiras",
         "unidade": "CRAS FIGUEIRAS - RENATO ANTONIAZZI",
         "endereco": "Rua Abraão Martini, nº 51",
         "telefone": "(19) 3869-3313",

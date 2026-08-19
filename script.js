@@ -292,7 +292,7 @@ var unidadesDeSaude = [
     },
     {
         "categoria": "ubs-upa",
-        "nome": "UNIDADE DE PRONTO ATENDIMENTO MATERNO INFANTIL \u2013 UPAMI 24h",
+        "nome": "UNIDADE DE PRONTO ATENDIMENTO MATERNO INFANTIL (UPAMI) 24h",
         "unidade": "UPA MATERNO INFANTIL",
         "endereco": "Av. Brasil, 53",
         "telefone": "(19) 3869-1422",

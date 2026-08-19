@@ -101,6 +101,16 @@ var unidadesDeSaude = [
         "lon": -46.997348
     },
     {
+        "categoria": "cras",
+        "nome": "Centro de Referência de Assistência Social (CRAS) CENTRAL II",
+        "unidade": "CRAS CENTRAL II",
+        "endereco": "Avenida dos Esportes, 303",
+        "telefone": "(19) 3829-1933 / 3829-4287",
+        "horario": "das 8h30 às 16 horas",
+        "lat": -22.973404,
+        "lon": -46.996236
+    },
+    {
         "categoria": "caps",
         "nome": "Centro de Referência em Atendimento Psicossocial (CREAPS)",
         "unidade": "CENTRO MUN. DE ATENDIMENTO PSICOPEDAGÓGICO",

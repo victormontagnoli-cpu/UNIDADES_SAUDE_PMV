@@ -282,7 +282,7 @@ var unidadesDeSaude = [
     },
     {
         "categoria": "ubs-upa",
-        "nome": "UPA 24H \u2013 Prefeito Jos\u00e9 Spadaccia \"Bepe\"",
+        "nome": "UNIDADE DE PRONTO ATENDIMENTO (UPA) 24H \u2013 Prefeito Jos\u00e9 Spadaccia \"Bepe\"",
         "unidade": "UPA 24H",
         "endereco": "Av. Gessy Lever, 550",
         "telefone": "(19) 3849-3753",
